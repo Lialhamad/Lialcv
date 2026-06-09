@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Lial Hamad – CV</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f4f6fb;--surface:#ffffff;--surface2:#f0f3fa;--surface3:#e6ebf5;
+  --accent:#4f6ef7;--accent2:#2d4fd6;--accent-light:#eef1fe;
+  --text:#1a1d2e;--muted:#6b7294;--border:#dde2f0;--card:#ffffff;
+  --teal:#0ea5b0;--teal-light:#e6f8f9;
+  --purple:#7c3aed;--purple-light:#f3effe;
+}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
+.shell{display:flex;min-height:100vh}
+
+/* Sidebar */
+.sidebar{width:230px;min-width:230px;background:var(--surface);border-right:1px solid var(--border);padding:2rem 1.1rem;display:flex;flex-direction:column;gap:.35rem;position:sticky;top:0;height:100vh}
+.logo-wrap{margin-bottom:1.8rem;padding:.9rem 1rem;background:var(--accent-light);border-radius:12px;border:1px solid #d0d8fb}
+.logo-name{font-size:1.05rem;font-weight:700;color:var(--accent2);letter-spacing:-.02em}
+.logo-role{font-size:.72rem;color:var(--muted);margin-top:.15rem}
+.nav-btn{display:flex;align-items:center;gap:.65rem;background:none;border:none;color:var(--muted);font-size:.83rem;padding:.6rem .8rem;border-radius:9px;cursor:pointer;width:100%;text-align:left;transition:all .18s}
+.nav-btn i{font-size:1rem}
+.nav-btn:hover{background:var(--surface2);color:var(--text)}
+.nav-btn.active{background:var(--accent-light);color:var(--accent2);font-weight:600;border-left:3px solid var(--accent)}
+.nav-btn .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);margin-left:auto;opacity:0;transition:.2s}
+.nav-btn.active .dot{opacity:1}
+.sidebar-footer{margin-top:auto;padding-top:1rem;border-top:1px solid var(--border)}
+.avail-badge{display:flex;align-items:center;gap:.5rem;font-size:.73rem;color:#059669;padding:.45rem .8rem;background:#ecfdf5;border-radius:8px;border:1px solid #a7f3d0;font-weight:500}
+
+/* Main */
+.main{flex:1;overflow-y:auto;padding:2.5rem 3rem}
+.section{display:none;animation:fadeIn .28s ease}
+.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* Hero */
+.hero-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem 2.2rem;margin-bottom:1.5rem;position:relative;overflow:hidden}
+.hero-card::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:radial-gradient(circle,#dde4fd 0%,transparent 70%);pointer-events:none}
+.hero-top{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.2rem}
+.avatar{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--teal));display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;color:#fff;flex-shrink:0;letter-spacing:-.02em}
+.hero h1{font-size:2rem;font-weight:700;letter-spacing:-.04em;color:var(--text)}
+.hero-sub{font-size:.88rem;color:var(--muted);margin-top:.2rem;font-weight:500}
+.hero-desc{font-size:.85rem;color:var(--muted);line-height:1.75;max-width:600px;margin-bottom:1.2rem}
+.hero-chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.2rem}
+.chip{padding:.28rem .75rem;border-radius:999px;font-size:.73rem;font-weight:500}
+.chip-accent{background:var(--accent-light);color:var(--accent2);border:1px solid #c5cefb}
+.chip-teal{background:var(--teal-light);color:#0e7490;border:1px solid #a5f3fc}
+.chip-purple{background:var(--purple-light);color:var(--purple);border:1px solid #ddd6fe}
+.chip-gray{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
+.contact-row{display:flex;flex-wrap:wrap;gap:.6rem}
+.contact-pill{display:flex;align-items:center;gap:.4rem;background:var(--surface2);border:1px solid var(--border);border-radius:999px;padding:.32rem .9rem;font-size:.76rem;color:var(--muted);text-decoration:none;transition:.18s}
+.contact-pill i{font-size:.85rem;color:var(--accent)}
+.contact-pill:hover{background:var(--accent-light);color:var(--accent2);border-color:#c5cefb}
+
+/* Stats */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin-bottom:1.5rem}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1rem;text-align:center}
+.stat-num{font-size:1.7rem;font-weight:700;letter-spacing:-.04em}
+.stat-num.blue{color:var(--accent)}
+.stat-num.teal{color:var(--teal)}
+.stat-num.purple{color:var(--purple)}
+.stat-lbl{font-size:.72rem;color:var(--muted);margin-top:.2rem}
+
+/* Section heading */
+.sec-label{font-size:.68rem;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;font-weight:600;margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* Skills */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:.9rem}
+.skill-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem 1.1rem;transition:.18s}
+.skill-card:hover{border-color:#c5cefb;background:var(--accent-light)}
+.skill-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.55rem}
+.skill-name{font-size:.84rem;font-weight:600;color:var(--text)}
+.skill-lvl{font-size:.68rem;color:var(--accent);font-weight:500;background:var(--accent-light);padding:.15rem .5rem;border-radius:999px}
+.skill-bar-bg{height:3px;background:var(--surface3);border-radius:999px;overflow:hidden}
+.skill-bar{height:100%;border-radius:999px;transition:width .9s cubic-bezier(.4,0,.2,1)}
+.skill-tag{font-size:.68rem;color:var(--muted);margin-top:.45rem}
+
+/* Category groups */
+.cat-label{font-size:.72rem;font-weight:600;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin:1.5rem 0 .7rem;padding-left:.2rem}
+.cat-label:first-child{margin-top:0}
+
+/* Timeline */
+.timeline{position:relative;padding-left:1.6rem}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:2px;background:var(--border);border-radius:2px}
+.tl-item{position:relative;margin-bottom:2rem}
+.tl-dot{position:absolute;left:-2.1rem;top:5px;width:11px;height:11px;border-radius:50%;background:var(--accent);border:2.5px solid var(--bg)}
+.tl-company{font-size:.72rem;color:var(--muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.3rem}
+.tl-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:.25rem}
+.tl-role{font-weight:700;font-size:.92rem;color:var(--text)}
+.tl-date{font-size:.72rem;color:var(--accent);white-space:nowrap;background:var(--accent-light);border:1px solid #c5cefb;padding:.2rem .6rem;border-radius:6px;font-weight:500}
+.tl-bullets{margin-top:.4rem;padding-left:1rem}
+.tl-bullets li{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.2rem}
+.tl-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.6rem}
+.tl-tag{font-size:.68rem;background:var(--surface2);border:1px solid var(--border);padding:.16rem .52rem;border-radius:6px;color:var(--muted)}
+
+/* Projects */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.proj-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.3rem;transition:.2s;cursor:default}
+.proj-card:hover{border-color:#c5cefb;box-shadow:0 4px 20px rgba(79,110,247,.07)}
+.proj-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:.8rem;font-size:1.1rem}
+.proj-ico.blue{background:var(--accent-light);color:var(--accent2)}
+.proj-ico.teal{background:var(--teal-light);color:var(--teal)}
+.proj-title{font-weight:700;font-size:.88rem;margin-bottom:.4rem;color:var(--text)}
+.proj-org{font-size:.72rem;color:var(--accent);font-weight:500;margin-bottom:.4rem}
+.proj-desc{font-size:.78rem;color:var(--muted);line-height:1.65}
+
+/* Education & Certs */
+.edu-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.4rem;margin-bottom:.8rem;display:flex;gap:1.2rem;align-items:flex-start}
+.edu-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.edu-ico.purple{background:var(--purple-light);color:var(--purple)}
+.edu-ico.blue{background:var(--accent-light);color:var(--accent2)}
+.edu-ico.teal{background:var(--teal-light);color:var(--teal)}
+.edu-title{font-weight:600;font-size:.88rem;color:var(--text)}
+.edu-sub{font-size:.78rem;color:var(--accent);margin:.15rem 0 .2rem;font-weight:500}
+.edu-date{font-size:.72rem;color:var(--muted)}
+.edu-courses{font-size:.73rem;color:var(--muted);margin-top:.4rem;line-height:1.6}
+
+/* Terminal */
+.terminal{background:#f8f9ff;border:1px solid var(--border);border-radius:14px;overflow:hidden;font-family:'Courier New',monospace}
+.term-bar{background:var(--surface);padding:.6rem 1rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border)}
+.term-dot{width:10px;height:10px;border-radius:50%}
+.term-title{font-size:.73rem;color:var(--muted);margin-left:.5rem;font-family:'Segoe UI',sans-serif}
+.term-body{padding:1.2rem;min-height:200px;max-height:300px;overflow-y:auto}
+.term-line{font-size:.8rem;line-height:1.7;margin-bottom:.15rem}
+.term-prompt{color:var(--accent2);font-weight:700}
+.term-out{color:#047857}
+.term-dim{color:#aab}
+.term-input-row{display:flex;align-items:center;gap:.5rem;padding:.7rem 1.2rem;border-top:1px solid var(--border);background:var(--surface)}
+.term-input-row span{color:var(--accent2);font-family:monospace;font-size:.82rem;font-weight:700}
+.term-input{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:'Courier New',monospace;font-size:.8rem}
+.term-send{background:var(--accent);border:none;color:#fff;padding:.32rem .8rem;border-radius:7px;cursor:pointer;font-size:.75rem;font-family:'Segoe UI',sans-serif;transition:.15s;font-weight:500}
+.term-send:hover{background:var(--accent2)}
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="logo-wrap">
+      <div class="logo-name">Lial Hamad</div>
+      <div class="logo-role">Industrial & Systems Engineer</div>
+    </div>
+    <button class="nav-btn active" onclick="show('about',this)"><i class="ti ti-user"></i> About <span class="dot"></span></button>
+    <button class="nav-btn" onclick="show('skills',this)"><i class="ti ti-chart-bar"></i> Skills <span class="dot"></span></button>
+    <button class="nav-btn" onclick="show('experience',this)"><i class="ti ti-briefcase"></i> Experience <span class="dot"></span></button>
+    <button class="nav-btn" onclick="show('projects',this)"><i class="ti ti-bulb"></i> Projects <span class="dot"></span></button>
+    <button class="nav-btn" onclick="show('education',this)"><i class="ti ti-school"></i> Education <span class="dot"></span></button>
+    <button class="nav-btn" onclick="show('ask',this)"><i class="ti ti-message-chatbot"></i> Ask Me <span class="dot"></span></button>
+    <div class="sidebar-footer">
+      <div class="avail-badge"><i class="ti ti-circle-filled"></i> Open to opportunities</div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- About -->
+    <section id="about" class="section active">
+      <div class="hero-card hero">
+        <div class="hero-top">
+          <div class="avatar">LH</div>
+          <div>
+            <h1>Lial Hamad</h1>
+            <div class="hero-sub">Industrial & Systems Engineer · Riyadh, Saudi Arabia</div>
+          </div>
+        </div>
+        <p class="hero-desc">Industrial and Systems Engineering graduate with practical experience in data analysis, process improvement, and supply chain analysis. Interested in applying AI and advanced analytics to support business and operational decisions. Certified in PL-300 and AI-900 with proven ability to manage projects, coordinate teams, and deliver actionable insights.</p>
+        <div class="hero-chips">
+          <span class="chip chip-accent">Data Analytics</span>
+          <span class="chip chip-teal">Power BI · PL-300</span>
+          <span class="chip chip-purple">AI-900 Certified</span>
+          <span class="chip chip-accent">Process Improvement</span>
+          <span class="chip chip-gray">Supply Chain</span>
+          <span class="chip chip-gray">Six Sigma · DMAIC</span>
+        </div>
+        <div class="contact-row">
+          <a class="contact-pill" href="tel:0543997916"><i class="ti ti-phone"></i>0543997916</a>
+          <a class="contact-pill" href="mailto:Layelhamad@gmail.com"><i class="ti ti-mail"></i>Layelhamad@gmail.com</a>
+          <a class="contact-pill" href="#"><i class="ti ti-map-pin"></i>Riyadh</a>
+          <a class="contact-pill" href="#"><i class="ti ti-brand-linkedin"></i>Lial Hamad</a>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num blue">4.88<span style="font-size:1rem">/5</span></div><div class="stat-lbl">GPA · Princess Nourah University</div></div>
+        <div class="stat-card"><div class="stat-num teal">3+</div><div class="stat-lbl">Projects delivered</div></div>
+        <div class="stat-card"><div class="stat-num purple">4</div><div class="stat-lbl">Certifications earned</div></div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section">
+      <div class="sec-label"><i class="ti ti-chart-bar"></i> Technical skills</div>
+      <div class="cat-label">Data & Visualization</div>
+      <div class="skills-grid" id="sg1"></div>
+      <div class="cat-label">Process & Operations</div>
+      <div class="skills-grid" id="sg2"></div>
+      <div class="cat-label">Analytics & Business</div>
+      <div class="skills-grid" id="sg3"></div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section">
+      <div class="sec-label"><i class="ti ti-briefcase"></i> Work experience</div>
+      <div class="timeline" id="timeline"></div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <div class="sec-label"><i class="ti ti-bulb"></i> Featured projects</div>
+      <div class="proj-grid" id="proj-grid"></div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section">
+      <div class="sec-label"><i class="ti ti-school"></i> Education & certifications</div>
+      <div id="edu-list"></div>
+    </section>
+
+    <!-- Ask Me -->
+    <section id="ask" class="section">
+      <div class="sec-label"><i class="ti ti-message-chatbot"></i> Ask me anything</div>
+      <div class="terminal">
+        <div class="term-bar">
+          <div class="term-dot" style="background:#ff5f57"></div>
+          <div class="term-dot" style="background:#febc2e"></div>
+          <div class="term-dot" style="background:#28c840"></div>
+          <span class="term-title">lial@portfolio ~ ask-me-anything</span>
+        </div>
+        <div class="term-body" id="term-body">
+          <div class="term-line term-dim">// Ask anything about Lial — powered by AI.</div>
+          <div class="term-line term-dim">// Try: "What tools does Lial use?" or "Tell me about her projects"</div>
+          <div class="term-line">&nbsp;</div>
+        </div>
+        <div class="term-input-row">
+          <span>›</span>
+          <input class="term-input" id="term-input" type="text" placeholder="Type your question and press Enter..." autocomplete="off"/>
+          <button class="term-send" onclick="askAI()">Ask</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+const skillGroups={
+  sg1:[
+    {name:'Power BI (PL-300)',pct:92,lvl:'Expert',tag:'Data Visualization',color:'#4f6ef7'},
+    {name:'Excel (Advanced)',pct:90,lvl:'Expert',tag:'Data Analysis',color:'#4f6ef7'},
+    {name:'Tableau',pct:78,lvl:'Advanced',tag:'Data Visualization',color:'#4f6ef7'},
+    {name:'SQL',pct:72,lvl:'Advanced',tag:'Database',color:'#4f6ef7'},
+  ],
+  sg2:[
+    {name:'DMAIC / Six Sigma',pct:85,lvl:'Advanced',tag:'Process Improvement',color:'#0ea5b0'},
+    {name:'Supply Chain Analysis',pct:80,lvl:'Advanced',tag:'Operations',color:'#0ea5b0'},
+    {name:'Root Cause Analysis',pct:78,lvl:'Advanced',tag:'Process',color:'#0ea5b0'},
+    {name:'Project Management',pct:82,lvl:'Advanced',tag:'Management',color:'#0ea5b0'},
+  ],
+  sg3:[
+    {name:'KPI Tracking',pct:86,lvl:'Expert',tag:'Business Analytics',color:'#7c3aed'},
+    {name:'Forecasting & Modeling',pct:80,lvl:'Advanced',tag:'Analytics',color:'#7c3aed'},
+    {name:'Market Research',pct:84,lvl:'Advanced',tag:'Consulting',color:'#7c3aed'},
+    {name:'Stakeholder Communication',pct:88,lvl:'Expert',tag:'Soft Skill',color:'#7c3aed'},
+  ]
+};
+
+Object.entries(skillGroups).forEach(([id,skills])=>{
+  const g=document.getElementById(id);
+  skills.forEach(s=>{
+    g.innerHTML+=`<div class="skill-card">
+      <div class="skill-top"><span class="skill-name">${s.name}</span><span class="skill-lvl">${s.lvl}</span></div>
+      <div class="skill-bar-bg"><div class="skill-bar" data-pct="${s.pct}" style="width:0%;background:${s.color}"></div></div>
+      <div class="skill-tag">${s.tag}</div>
+    </div>`;
+  });
+});
+
+const jobs=[
+  {company:'OceanX for Solutions',role:'Market Research Associate',date:'Sep 2025 – Present',bullets:[
+    'Coordinated 3+ projects across internal and government client engagements within tight timelines.',
+    'Acted as key point of contact for clients, gathering and clarifying business requirements.',
+    'Conducted market research, industry analysis, and benchmarking for strategic recommendations.',
+    'Developed structured reports and interactive dashboards for data-driven decision-making.',
+  ],tags:['Market Research','Dashboards','Client Management','Strategy']},
+  {company:'OceanX for Solutions',role:'Consulting Intern',date:'Jan 2025 – Sep 2025',bullets:[
+    'Gained hands-on experience in resource management, project coordination, and strategic analysis.',
+    'Contributed to initiatives improving project workflows and knowledge-sharing practices.',
+  ],tags:['Consulting','Project Coordination','Strategic Analysis']},
+  {company:'Alkhourayef Commercial Company',role:'Logistics & Supply Chain Engineer (Part-time)',date:'Jan 2023 – Aug 2023',bullets:[
+    'Coordinated with suppliers to track and expedite delayed orders, minimizing disruptions.',
+    'Analyzed purchase orders using Excel to track delays and enhance procurement efficiency.',
+    'Designed and updated a weekly Power BI dashboard for real-time decision-making insights.',
+  ],tags:['Power BI','Excel','Supply Chain','Procurement']},
+];
+
+const tl=document.getElementById('timeline');
+jobs.forEach(j=>{
+  tl.innerHTML+=`<div class="tl-item">
+    <div class="tl-dot"></div>
+    <div class="tl-company">${j.company}</div>
+    <div class="tl-header"><span class="tl-role">${j.role}</span><span class="tl-date">${j.date}</span></div>
+    <ul class="tl-bullets">${j.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>
+    <div class="tl-tags">${j.tags.map(t=>`<span class="tl-tag">${t}</span>`).join('')}</div>
+  </div>`;
+});
+
+const projects=[
+  {ico:'ti-recycle',icoClass:'blue',title:'Waste Management & Operational Efficiency',org:'Herfy Factory',desc:'Applied DMAIC methodology to identify production inefficiencies and reduce waste. Proposed data-driven solutions to improve operational efficiency and sustainability.'},
+  {ico:'ti-plane',icoClass:'teal',title:'Forecasting & Resource Optimization',org:'Saudi Airlines',desc:'Built a hybrid forecasting model to enhance capacity planning and pricing strategies. Improved decision-making related to resource allocation and demand forecasting.'},
+];
+
+const pg=document.getElementById('proj-grid');
+projects.forEach(p=>{
+  pg.innerHTML+=`<div class="proj-card">
+    <div class="proj-ico ${p.icoClass}"><i class="ti ${p.ico}"></i></div>
+    <div class="proj-title">${p.title}</div>
+    <div class="proj-org"><i class="ti ti-building" style="font-size:.8rem;vertical-align:-1px;margin-right:3px"></i>${p.org}</div>
+    <div class="proj-desc">${p.desc}</div>
+  </div>`;
+});
+
+const edu=[
+  {ico:'ti-school',cls:'purple',title:'Bachelor of Industrial & Systems Engineering',sub:'Princess Nourah University · GPA: 4.88/5',date:'2020 – 2025',courses:'Six Sigma, Predictive Modeling, Operations Research & Scheduling, Project Management, Finance & Economics for Engineers'},
+  {ico:'ti-certificate',cls:'blue',title:'Nanodegree in Business Analysis',sub:'Udacity',date:''},
+  {ico:'ti-brand-windows',cls:'blue',title:'Microsoft Power BI Data Analyst — PL-300',sub:'Microsoft',date:''},
+  {ico:'ti-brain',cls:'teal',title:'Microsoft Azure AI Fundamentals — AI-900',sub:'Microsoft',date:''},
+  {ico:'ti-clipboard-list',cls:'purple',title:'Project Management',sub:'Certification',date:''},
+];
+
+const el=document.getElementById('edu-list');
+edu.forEach(e=>{
+  el.innerHTML+=`<div class="edu-card">
+    <div class="edu-ico ${e.cls}"><i class="ti ${e.ico}"></i></div>
+    <div>
+      <div class="edu-title">${e.title}</div>
+      <div class="edu-sub">${e.sub}</div>
+      ${e.date?`<div class="edu-date">${e.date}</div>`:''}
+      ${e.courses?`<div class="edu-courses">Courses: ${e.courses}</div>`:''}
+    </div>
+  </div>`;
+});
+
+function show(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  if(id==='skills') setTimeout(()=>{
+    document.querySelectorAll('.skill-bar').forEach(b=>b.style.width=b.dataset.pct+'%');
+  },100);
+}
+
+const PROFILE=`You are an AI assistant embedded in Lial Hamad's interactive portfolio CV. Answer questions about Lial based on this profile:
+- Full name: Lial Hamad
+- Location: Riyadh, Saudi Arabia
+- Email: Layelhamad@gmail.com | Phone: 0543997916
+- Degree: Bachelor of Industrial & Systems Engineering, Princess Nourah University (2020–2025), GPA: 4.88/5
+- Coursework: Six Sigma, Predictive Modeling, Operations Research & Scheduling, Project Management, Finance & Economics for Engineers
+- Certifications: Nanodegree in Business Analysis, Microsoft Power BI PL-300, Microsoft Azure AI-900, Project Management
+- Current role: Market Research Associate at OceanX for Solutions (Sep 2025–present)
+- Previous: Consulting Intern at OceanX (Jan–Sep 2025), Logistics & Supply Chain Engineer (Part-time) at Alkhourayef Commercial Company (Jan–Aug 2023)
+- Skills: Power BI (Expert), Excel Advanced (Expert), Tableau, SQL, DMAIC/Six Sigma, Supply Chain Analysis, Root Cause Analysis, Project Management, KPI Tracking, Forecasting, Market Research, Stakeholder Communication
+- Projects: DMAIC waste reduction at Herfy Factory; Hybrid forecasting model for Saudi Airlines capacity planning
+- Interested in AI applications in business and operational analytics
+- Available for new opportunities
+Answer in 2-3 concise sentences. Be warm and professional. No markdown formatting.`;
+
+async function askAI(){
+  const inp=document.getElementById('term-input');
+  const q=inp.value.trim();
+  if(!q)return;
+  const body=document.getElementById('term-body');
+  body.innerHTML+=`<div class="term-line"><span class="term-prompt">› </span>${q}</div>`;
+  inp.value='';
+  body.innerHTML+=`<div class="term-line term-dim" id="thinking">Processing...</div>`;
+  body.scrollTop=body.scrollHeight;
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:PROFILE,messages:[{role:'user',content:q}]})
+    });
+    const d=await r.json();
+    const ans=d.content?.[0]?.text||'No response.';
+    document.getElementById('thinking')?.remove();
+    body.innerHTML+=`<div class="term-line term-out">${ans}</div><div class="term-line">&nbsp;</div>`;
+  }catch(e){
+    document.getElementById('thinking')?.remove();
+    body.innerHTML+=`<div class="term-line" style="color:#dc2626">Error. Please try again.</div>`;
+  }
+  body.scrollTop=body.scrollHeight;
+}
+document.getElementById('term-input').addEventListener('keydown',e=>{if(e.key==='Enter')askAI()});
+</script>
+</body>
+</html>
